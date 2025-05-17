@@ -14,9 +14,9 @@ function Dashboard({ match }) {
   }, [deviceId]);
 
   const fetchTelemetry = async () => {
-    const res = await axios.get(`http://thingsboardserver.vercel.app/api/telemetry/${deviceId}`);
+    const res = await axios.get(`https://thingsboardserver.vercel.app/api/telemetry/${deviceId}`);
     setTelemetry(res.data);
-  };
+  };   
 
   const chartData = {
     labels: telemetry.map(t => new Date(t.timestamp).toLocaleTimeString()),
