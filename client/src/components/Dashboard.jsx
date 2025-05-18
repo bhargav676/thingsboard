@@ -7,17 +7,17 @@ import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 function Dashboard() {
-  const { deviceId } = useParams(); 
+  const { deviceId } = useParams(); // Get deviceId from URL
   const [telemetry, setTelemetry] = useState([]);
   const [error, setError] = useState('');
 
   useEffect(() => {
     fetchTelemetry();
-  }, [deviceId]); 
+  }, [deviceId]);
 
   const fetchTelemetry = async () => {
     try {
-      const res = await axios.get(`https://thingsboardserver.vercel.app/api/telemetry/${deviceId}`);
+      const res = await axios.get(`http://127.0.0.1:3000/api/telemetry/${deviceId}`);
       setTelemetry(res.data);
       setError('');
     } catch (err) {
