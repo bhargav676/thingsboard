@@ -24,9 +24,10 @@ router.get('/:deviceId', async (req, res) => {
     const control = await Control.findOne({ deviceId: req.params.deviceId })
       .sort({ timestamp: -1 });
     if (!control) {
-      return res.status(404).json({ error: 'No control state found' });
+      return res.status(404).send('OFF'); // Default to OFF if no state
     }
-    res.json({ ledState: control.ledState });
+    res.set('Content-Type', 'text/plain');
+    res.send(control.ledState); // Return "ON" or "OFF"
   } catch (err) {
     console.error('Error fetching control:', err);
     res.status(500).json({ error: 'Error fetching control', details: err.message });
