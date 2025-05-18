@@ -1,3 +1,5 @@
+
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -7,13 +9,12 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://thingsboard.vercel.app/'],
-  methods: ['GET', 'POST'],
+  origin: ['http://localhost:5713', 'https://thingsboard.vercel.app/'],
+  methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type']
 }));
 app.use(express.json());
 
-// MongoDB Connection
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected'))
   .catch(err => {
@@ -21,7 +22,6 @@ mongoose.connect(process.env.MONGO_URI)
     process.exit(1);
   });
 
-// Routes
 app.use('/api/devices', require('./api/devices'));
 app.use('/api/telemetry', require('./api/telemetry'));
 
