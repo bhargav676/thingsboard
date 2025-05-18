@@ -45,7 +45,30 @@ function Dashboard() {
       {telemetry.length === 0 ? (
         <p>No telemetry data available</p>
       ) : (
-        <Line data={chartData} />
+        <>
+          <Line data={chartData} />
+          <h3>Telemetry Data</h3>
+          <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '20px' }}>
+            <thead>
+              <tr>
+                <th style={{ border: '1px solid #ddd', padding: '8px' }}>Timestamp</th>
+                <th style={{ border: '1px solid #ddd', padding: '8px' }}>Temperature (°C)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {telemetry.map((t, index) => (
+                <tr key={index}>
+                  <td style={{ border: '1px solid #ddd', padding: '8px' }}>
+                    {new Date(t.timestamp).toLocaleString()}
+                  </td>
+                  <td style={{ border: '1px solid #ddd', padding: '8px' }}>
+                    {t.data.temperature}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </>
       )}
     </div>
   );
