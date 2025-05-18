@@ -20,6 +20,7 @@ mongoose.connect(process.env.MONGO_URI)
 // Routes
 app.use('/api/devices', require('./api/devices'));
 app.use('/api/telemetry', require('./api/telemetry'));
+app.use('/api/control', require('./api/control'));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
