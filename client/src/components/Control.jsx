@@ -10,7 +10,7 @@ function Control() {
     try {
       console.log(`Sending ${ledState} to device ${deviceId}`);
       const response = await axios.post(
-        'http://127.0.0.1:3000/api/control',
+        'https://thingsboardserver.vercel.app/api/control',
         { deviceId, ledState },
         { headers: { 'Content-Type': 'application/json' } }
       );
