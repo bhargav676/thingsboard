@@ -7,13 +7,13 @@ import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 function Dashboard() {
-  const { deviceId } = useParams(); // Get deviceId from URL
+  const { deviceId } = useParams(); 
   const [telemetry, setTelemetry] = useState([]);
   const [error, setError] = useState('');
 
   useEffect(() => {
     fetchTelemetry();
-  }, [deviceId]);
+  }, [deviceId]); 
 
   const fetchTelemetry = async () => {
     try {
