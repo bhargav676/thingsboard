@@ -17,7 +17,7 @@ function Dashboard() {
 
   const fetchTelemetry = async () => {
     try {
-      const res = await axios.get(`http://127.0.0.1:3000/api/telemetry/${deviceId}`);
+      const res = await axios.get(`https://thingsboardserver.vercel.app/api/telemetry/${deviceId}`);
       setTelemetry(res.data);
       setError('');
     } catch (err) {

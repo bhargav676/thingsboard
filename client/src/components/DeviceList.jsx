@@ -12,7 +12,7 @@ function DeviceList() {
 
   const fetchDevices = async () => {
     try {
-      const res = await axios.get('http://127.0.0.1:3000/api/devices');
+      const res = await axios.get('https://thingsboardserver.vercel.app/api/devices');
       setDevices(res.data);
       setError('');
     } catch (err) {
@@ -24,7 +24,7 @@ function DeviceList() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://127.0.0.1:3000/api/devices', form);
+      await axios.post('https://thingsboardserver.vercel.app/api/devices', form);
       fetchDevices();
       setForm({ deviceId: '', name: '', type: 'sensor' });
       setError('');
